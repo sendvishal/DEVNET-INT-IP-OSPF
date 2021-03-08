@@ -1,0 +1,17 @@
+hostname {{ host['hostname'] }}
+{% for interface in host['interfaces'] %}
+!
+interface {{ interface['name'] }}
+  description {{ interface['description']|upper }}
+  ip address {{ interface['ip'] }} {{ interface['mask'] }}
+  {% if interface['enabled'] %}no {% endif %}shutdown
+!
+{% endfor %}
+!
+router ospf {{ host['ospf']['ospf_process']}}
+router-id {{host['ospf']['ospf_rid']}}
+{% for n in host ['ospf']['ospf_networks'] %}
+network {{ n['ip']}} {{ n['wildcard'] }} area {{ n ['area'] }}
+!
+{% endfor %}
+
