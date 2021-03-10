@@ -9,8 +9,7 @@ nr = InitNornir(config_file="config.yml")
 def basic_configuration(task):
     r = task.run(template_file,
                  template="InterfaceIP-ospf.j2", path=f"templates/")
-    task.host["config"] = r.result
-    output = task.host["config"]
+    output = r.result
     send = output.splitlines()
     task.run(netmiko_send_config,  config_commands=send)
     task.run(netmiko_send_command,
