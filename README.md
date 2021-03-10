@@ -27,4 +27,4 @@ python3 nornir-InterfaceIPv4_OSPF-config-using_jinja2_IOS.py
 
 ### 5) Reuslt 
 
-Interface IPv4 and OSPFv2 Configuraiton based on nornir data key ( users file), jinja2 template.  
+Interface IPv4 and OSPFv2 Configuraiton based on nornir data key ( hosts.yml), jinja2 template.  
